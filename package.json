@@ -1,0 +1,38 @@
+{
+  "name": "relay-test",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "babel-watch server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babel-core": "^6.4.5",
+    "babel-polyfill": "^6.3.14",
+    "babel-preset-node5": "^10.5.0",
+    "babel-register": "^6.4.3",
+    "babel-relay-plugin": "^0.6.3",
+    "bluebird": "^3.4.7",
+    "csv-parse": "^1.1.7",
+    "es6-promise": "^4.0.5",
+    "express": "^4.13.4",
+    "express-fileupload": "0.0.5",
+    "express-graphql": "^0.4.4",
+    "faker": "^3.0.1",
+    "graphql": "^0.4.16",
+    "graphql-relay": "^0.3.6",
+    "lodash": "^4.2.1",
+    "mongoose": "^4.7.6",
+    "node-uuid": "^1.4.7",
+    "pg": "^4.4.4",
+    "pg-hstore": "^2.3.2",
+    "pug": "^2.0.0-beta6",
+    "sequelize": "^3.19.1",
+    "sqlite": "^2.2.4",
+    "sqlite3": "^3.1.8"
+  },
+  "devDependencies": {
+    "babel-watch": "^2.0.5"
+  }
+}

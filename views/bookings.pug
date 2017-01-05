@@ -1,0 +1,19 @@
+//- page-a.pug
+extends layout.pug
+block scripts
+  script(src='/jquery.js')
+  //- script(src='/client.js')
+block nav
+
+block content
+  ul#mapping
+    each val in bookings
+      li.bkng
+        div= val.id
+        div= val.datum
+        div.title= val.title
+        div= val.charge
+        div= val.entry
+        select
+          each val in accounts
+            option= val.name

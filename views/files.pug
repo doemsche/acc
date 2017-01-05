@@ -1,0 +1,18 @@
+//- page-a.pug
+extends layout.pug
+block scripts
+  script(src='/jquery.js')
+  script(src='/client.js')
+block nav
+  div
+    a(href="/months") bookings
+  div
+    a(href="/accounts") accounts
+  div
+    button(id="resetBookings") delete bks
+block content
+  ul#parselist
+    each val in files
+      li(id=`${val.substring(0,val.length -4)}`)= val
+        button.parse parse
+
