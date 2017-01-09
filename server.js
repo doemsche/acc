@@ -3,6 +3,7 @@ import Express from 'express';
 import fileUpload from 'express-fileupload';
 import uuid from 'node-uuid';
 import parse from 'csv-parse';
+import moment from 'moment';
 
 import mongoose from 'mongoose';
 import es6Promise from 'es6-promise';
@@ -11,7 +12,7 @@ const dbname = 'accntng';
 mongoose.connect('mongodb://localhost/'+dbname);
 mongoose.Promise = es6Promise.Promise;
 const bookingSchema = mongoose.Schema({
-    date: String,
+    date: Date,
     text: String,
     in: String,
     out: String
@@ -57,9 +58,12 @@ app.get('/months', (req,res)=>{
 });
 
 app.get('/bookings/:month', (req,res)=>{
-  let month = req.params.month;
+  let month = (req.params.month-1).toString();
+
+  // db.mydatabase.mycollection.find({$where : function() { return this.date.getMonth() == 11} })
+
   let q1 = Account.find();
-  let q2 = Booking.find();
+  let q2 = Booking.find({$where : 'return this.date.getMonth() == '+month});
   let p1 = q1.exec();
   let p2 = q2.exec();
 
@@ -114,10 +118,10 @@ app.post('/parse', (req, res)=>{
       for(let i = 0; i < data.length; i++){
         //csv obj
         let tmp = data[i];
-        console.log(tmp)
+        
         //db obj
         let dbObj = new Booking({
-          date:tmp.date,
+          date: moment(tmp.date,'DD.MM.YYYY'),
           text:tmp.text,
           in:tmp.out,
           out:tmp.in,

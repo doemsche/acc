@@ -10,10 +10,10 @@ block content
     each val in bookings
       li.bkng
         div= val.id
-        div= val.datum
-        div.title= val.title
-        div= val.charge
-        div= val.entry
+        div= val.date
+        div.title= val.text
+        div= val.in
+        div= val.out
         select
           each val in accounts
             option= val.name
